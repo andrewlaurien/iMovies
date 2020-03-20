@@ -60,18 +60,25 @@ public class MainActivity extends AppCompatActivity {
         public void OnItemClicl(int position) {
 
             if (isTabDevice) {
+                userActions = "0";
+
                 DetailsFragment fragment = DetailsFragment.newInstance(adapter.getItem(position));
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.item_detail_container, fragment)
                         .commit();
+
+                userActions += String.valueOf(position);
+                Log.d("ACTIONS",""+userActions);
+
             } else {
                 Intent intent = new Intent(context, DetailActivity.class);
                 intent.putExtra("Track", gson.toJson(adapter.getItem(position)));
                 startActivityForResult(intent, 01);
+                userActions += String.valueOf(position);
+                Log.d("ACTIONS",""+userActions);
             }
 
-            userActions += String.valueOf(position);
-            Log.d("ACTIONS",""+userActions);
+
             saveActions(userActions);
 
         }

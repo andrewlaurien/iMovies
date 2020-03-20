@@ -12,6 +12,7 @@ import com.andrewlaurien.imovies.service.WebClient;
 import com.google.gson.Gson;
 
 import java.util.List;
+import java.util.prefs.Preferences;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -53,7 +54,6 @@ public class TrackRepository {
                 .add("term", key)
                 .add("country", "au")
                 .add("media", "movie");
-
 
         RequestBody formBody = formBuilder.build();
 
